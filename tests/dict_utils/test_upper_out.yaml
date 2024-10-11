@@ -1,0 +1,77 @@
+---
+KEY_0:
+  KEY_1:
+    ID: "1"
+    BOOL_1: true
+    BOOL_2: true
+    BOOL_3: true
+    LIST_1:
+      - ONE
+      - TWO
+    LIST_2:
+      - THREE
+      - FOUR
+    KEY_2:
+      KEY_3:
+        KEY_4:
+          LIST_3:
+            - ONE
+          KEY_A: "file_name"
+          KEY_B: 1
+          KEY_5:
+            LIST_4:
+              - CAPTION: "ABC"
+                EXPECT: 1
+                OPERATOR: "="
+          KEY_7:
+            LIST_5:
+              - EXPECT: 1
+                OPERATOR: ">="
+                RANGE: 0, 2
+      KEY_8:
+        KEY_9:
+          KEY_C: "value"
+      KEY_9:
+        KEY_10:
+          KEY_D: "key d"
+          BOOL_4: false
+          LIST_6:
+            - value
+          KEY_11:
+            LIST_7:
+              - one
+              - two
+            LIST_8:
+              - NAME: name
+                OPERATOR: '>='
+                COUNTER: 1
+            LIST_9:
+              - CAPTION: caption
+                FILTER: string
+                VALUE: "event"
+          KEY_12:
+            - NAME: "NAME"
+              NUMBER_OF_LINES: 2
+              LENGTH: 3
+              LIST_10:
+                - CAPTION: "NAME"
+                  OPERATOR: ">"
+                  EXPECT: 0
+      KEY_13:
+        KEY_14:
+          KEY_E: "welcome"
+          BOOL_5: false
+          LIST_11:
+            - one
+          LIST_12:
+            - "one"
+          KEY_15:
+            LIST_13:
+              - one
+            COUNT: 2
+            KEY_16:
+              - NAME: "NAME"
+                LIST_14:
+                  - CAPTION: "NAME"
+                    OPERATOR: ">"
+                    EXPECT: "0"

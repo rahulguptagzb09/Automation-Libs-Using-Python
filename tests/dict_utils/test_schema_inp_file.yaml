@@ -1,0 +1,21 @@
+---
+main:
+  key1:
+    key2:
+      str1: test
+      int1: 1
+      list1:
+        - aaa
+        - bbb
+      dict1:
+        dict2:
+          key4: 1.1.1.1
+    key3:
+      str1: test
+      int1: 1
+      list1:
+        - aaa
+        - bbb
+      dict1:
+        dict2:
+          key4: 1.1.1.1

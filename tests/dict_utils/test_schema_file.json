@@ -1,0 +1,69 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "main": {
+      "type": "object",
+      "properties": {
+        "key1": {
+          "type": "object",
+          "patternProperties": {
+            "[a-zA-Z0-9-_]": {
+              "type": "object",
+              "properties": {
+                "str1": {
+                  "type": "string"
+                },
+                "int1": {
+                  "type": "integer"
+                },
+                "list1": {
+                  "type": "array"
+                },
+                "version": {
+                  "type": ["number","integer","object","array", "string"]
+                },
+                "dict1": {
+                  "type": "object",
+                  "properties": {
+                    "dict2": {
+                      "type": "object",
+                      "properties": {
+                        "key4": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "key4"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "patternProperties": {
+                    "dict2": {}
+                      },
+                      "additionalProperties": false
+                }
+              },
+              "required": [
+                "str1",
+                "int1",
+                "list1",
+                "dict1"
+              ],"patternProperties": {
+                        "extra": {}
+                      },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "key1"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

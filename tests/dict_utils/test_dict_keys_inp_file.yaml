@@ -1,0 +1,77 @@
+---
+key_0:
+  key_1:
+    ID: "1"
+    bool_1: true
+    bool_2: true
+    bool_3: true
+    list_1:
+      - ONE
+      - TWO
+    list_2:
+      - THREE
+      - FOUR
+    key_2:
+      key_3:
+        key_4:
+          list_3:
+            - ONE
+          key_a: "file_name"
+          key_b: 1
+          key_5:
+            list_4:
+              - CAPTION: "ABC"
+                operator: "="
+                EXPECT: 1
+          key_7:
+            list_5:
+              - expect: 1
+                operator: ">="
+                range: 0, 2
+      key_8:
+        key_9:
+          key_c: "value"
+      key_9:
+        key_10:
+          key_d: "key d"
+          bool_4: false
+          list_6:
+            - value
+          key_11:
+            list_7:
+              - one
+              - two
+            list_8:
+              - name: name
+                operator: '>='
+                counter: 1
+            list_9:
+              - caption: caption
+                filter: string
+                value: "event"
+          key_12:
+            - NAME: "NAME"
+              NUMBER_OF_LINES: 2
+              LENGTH: 3
+              list_10:
+                - caption: "NAME"
+                  operator: ">"
+                  expect: 0
+      key_13:
+        key_14:
+          key_e: "welcome"
+          bool_5: false
+          list_11:
+            - one
+          list_12:
+            - "one"
+          key_15:
+            LIST_13:
+              - one
+            COUNT: 2
+            key_16:
+              - NAME: "NAME"
+                LIST_14:
+                  - caption: "NAME"
+                    operator: ">"
+                    expect: "0"
