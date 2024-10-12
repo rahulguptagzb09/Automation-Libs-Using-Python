@@ -85,3 +85,28 @@ YAML Utils -
     def uppercase_keys_yaml(input_file: str, output_file: str, ignore_keys: tuple = (), mapping: int = 2, sequence: int = 4, offset: int = 2) -> None:
     def get_keys_list_from_yaml(input_file: str, key_path_list: list) -> list:
     def load_yaml(yaml_file: str) -> dict:
+
+File Utils - 
+    
+    def delete_old_files(path: str, days: int = 1, file_extension: str = "", file_name_starting: str = "") -> list:
+    def split_file_by_lines(input_dir: str, output_dir: str, number_of_lines: int = 1) -> None:
+    def find_lines_in_file_without_words(file_name: str, words: list) -> list:
+    def create_result_directory(directory_name: str) -> None:
+    def create_html(path: str, fields: list, data: dict) -> None:
+    def unzip_file(directory: str, zip_file_name: str) -> None:
+    def get_latest_file(find_file_str: str, directory: str) -> str:
+    def get_tag_value_from_xml_file(xml_file: str, tag_name: str) -> str:
+    def delete_directory(folder_path: str) -> None:
+    def get_files_differences(file1_path: str, file2_path: str) -> dict:
+
+Git Utils -
+    
+    def clone_git_repo(repo_url: str, repo_dir: str, repo_branch: str) -> None:
+    def get_branch_list(repo_url: str, repo_dir: str) -> list:
+
+Pcap Analyzer Wireshark Utils - 
+    
+    def pcap_to_csv(pcap_file: str, csv_file: str, wireshark_path: str = None, csv_file_preferences: str = None, columns=None, display_filter: str = None, all_protocol: bool = True, tshark_cmd: str = None) -> str:
+    def pcap_to_txt(pcap_file: str, txt_file: str, display_filter: str = None, decode_pref: dict = None, custom_pref: dict = None) -> str:
+    def get_pcap_data(pcap_file: str, display_filter: str = None, decode_pref: dict = None, custom_pref: dict = None) -> str:
+    def get_packet_header_count(pcap_csv_file: str, packet_header: str) -> int:
