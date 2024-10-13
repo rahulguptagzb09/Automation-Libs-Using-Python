@@ -12,21 +12,21 @@ from datetime import datetime
 from filesplit.split import Split
 
 
-def delete_old_files(path: str, days: int = 1, file_extension: str = "",
+def delete_files(path: str, days: int = 1, file_extension: str = "",
                      file_name_starting: str = "") -> list:
     """
     This function is used to delete old file based on modified date,
     extension and name prefix
     Arguments:
-      path ('str'): Path or folder form where files needs to be deleted.
-      days ('str'): Files having modified date older than mentioned days
-        will be deleted (default = 1). Example: 10
-      file_extension ('str'): File extension (optional, can be "").
-        Example: ".png"
-      file_name_starting ('str'): File prefix (optional, can be "").
-        Example: "Screen"
+        path ('str'): Path or folder form where files needs to be deleted.
+        days ('str'): Files having modified date older than mentioned days
+                        will be deleted (default = 1). Example: 10
+        file_extension ('str'): File extension (optional, can be "").
+            Example: ".png"
+        file_name_starting ('str'): File prefix (optional, can be "").
+            Example: "Screen"
     Returns:
-      deleted_file_names ('list'): list of deleted file names
+        deleted_file_names ('list'): list of deleted file names
     """
     deleted_file_names = []
     print("Path -", path)
@@ -80,11 +80,11 @@ def split_file_by_lines(input_dir: str, output_dir: str,
     This function is used to split single into multiple files based on
     number of lines
     Arguments:
-      input_dir ('str'): file that needs to split
-      output_dir ('str'): Directory to store new files
-      number_of_lines ('str'): number of lines
+        input_dir ('str'): file that needs to split
+        output_dir ('str'): Directory to store new files
+        number_of_lines ('str'): number of lines
     Returns:
-      None
+        None
     """
     split = Split(input_dir, output_dir)
     split.bylinecount(number_of_lines)
@@ -94,13 +94,13 @@ def find_lines_in_file_without_words(file_name: str, words: list) -> list:
     """
     This function is used to find lines without input words in a file
     Arguments:
-      file_name ('str'): file name along with path.
-        Put file name (if file is present in same folder as script) or
-        file path (file is present in some other folder)
-      words ('list'): list of words. Line will not contain these words.
-        Example: ["200", "500"]
+        file_name ('str'): file name along with path.
+            Put file name (if file is present in same folder as script) or
+            file path (file is present in some other folder)
+        words ('list'): list of words. Line will not contain these words.
+            Example: ["200", "500"]
     Returns:
-      out_lines ('list'):  list of lines
+        out_lines ('list'):  list of lines
     """
     out_lines = []
     # Loading the file
@@ -108,7 +108,6 @@ def find_lines_in_file_without_words(file_name: str, words: list) -> list:
         # Reading all lines
         lines = f.read().splitlines()
     f.close()
-
     # Checking the lines
     for line in lines:
         res = 1
@@ -119,17 +118,6 @@ def find_lines_in_file_without_words(file_name: str, words: list) -> list:
             # Showing lines that does not contain the mentioned word.
             out_lines.append(str(line))
     return out_lines
-
-
-def create_result_directory(directory_name: str) -> None:
-    """
-    This function is used to create local directory
-    Arguments:
-        directory_name ('str'): directory name
-    Returns:
-        None
-    """
-    os.mkdir(directory_name)
 
 
 def create_html(path: str, fields: list, data: dict) -> None:
@@ -147,12 +135,9 @@ def create_html(path: str, fields: list, data: dict) -> None:
             writer = csv.DictWriter(csvfile, delimiter=',', fieldnames=fields)
             if csvfile.tell() == 0:
                 writer.writeheader()
-
             writer.writerow(data)
-
         a = pd.read_csv(path)
         a.to_html(path, index=False, escape=False)
-
     except Exception as err:
         print(f"Exception Error: {err}")
 
@@ -161,10 +146,10 @@ def unzip_file(directory: str, zip_file_name: str) -> None:
     """
     This function is used to uncompress or unzip zip file
     Arguments:
-      directory ('str'): directory path
-      zip_file_name ('str'): folder name
+        directory ('str'): directory path
+        zip_file_name ('str'): folder name
     Returns:
-      None
+        None
     """
     if not os.path.exists(directory):
         os.makedirs(directory)
@@ -178,10 +163,10 @@ def get_latest_file(find_file_str: str, directory: str) -> str:
     """
     This function is used to get the latest file name from directory
     Arguments:
-      find_file_str ('str'): search string to get file name
-      directory ('str'): directory path
+        find_file_str ('str'): search string to get file name
+        directory ('str'): directory path
     Returns:
-      latest_file_name ('str'): file name
+        latest_file_name ('str'): file name
     """
     filtered_files = []
     for root, dirs, files in os.walk(directory):

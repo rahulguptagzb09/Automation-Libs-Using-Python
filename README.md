@@ -88,10 +88,9 @@ YAML Utils -
 
 File Utils - 
     
-    def delete_old_files(path: str, days: int = 1, file_extension: str = "", file_name_starting: str = "") -> list:
+    def delete_files(path: str, days: int = 1, file_extension: str = "", file_name_starting: str = "") -> list:
     def split_file_by_lines(input_dir: str, output_dir: str, number_of_lines: int = 1) -> None:
     def find_lines_in_file_without_words(file_name: str, words: list) -> list:
-    def create_result_directory(directory_name: str) -> None:
     def create_html(path: str, fields: list, data: dict) -> None:
     def unzip_file(directory: str, zip_file_name: str) -> None:
     def get_latest_file(find_file_str: str, directory: str) -> str:
@@ -110,3 +109,51 @@ Pcap Analyzer Wireshark Utils -
     def pcap_to_txt(pcap_file: str, txt_file: str, display_filter: str = None, decode_pref: dict = None, custom_pref: dict = None) -> str:
     def get_pcap_data(pcap_file: str, display_filter: str = None, decode_pref: dict = None, custom_pref: dict = None) -> str:
     def get_packet_header_count(pcap_csv_file: str, packet_header: str) -> int:
+
+Linux Docker CLI - 
+
+    def check_docker_service(ssh_conn: SSHClient = None, ip_address: str = None, username: str = None, password: str = None) -> bool:
+    def build_docker_image(image_name: str, dockerfile_path: str, ssh_conn: SSHClient = None, ip_address: str = None, username: str = None, password: str = None) -> None:
+    def stop_docker_container(container_name: str, ssh_conn: SSHClient = None, ip_address: str = None, username: str = None, password: str = None) -> None:
+    def delete_docker_container(container_name: str, ssh_conn: SSHClient = None, ip_address: str = None, username: str = None, password: str = None) -> None:
+    def delete_docker_image(image_name: str, ssh_conn: SSHClient = None, ip_address: str = None, username: str = None, password: str = None) -> None:
+    def push_docker_image(image_name: str, ssh_conn: SSHClient = None, ip_address: str = None, username: str = None, password: str = None) -> None:
+
+Linux Kubernetes CLI - 
+
+    def run_command_within_pod(kube_config: str, command: str, pod_name: str, container_name: str = None, ssh_conn: SSHClient = None, ip_address: str = None, username: str = None, password: str = None) -> str:
+    def copy_file_from_pod(kube_config: str, pod_name: str, container_name: str, src_path: str, dst_path: str, file_name: str, ssh_conn: SSHClient = None, ip_address: str = None, username: str = None, password: str = None) -> None:
+    def scale_pod(kube_config: str, deployment_name: str, pod_count: int, ssh_conn: SSHClient = None, ip_address: str = None, username: str = None, password: str = None) -> str:
+    def get_pod_logs(kube_config: str, pod_name: str, tail: int = None, ssh_conn: SSHClient = None, ip_address: str = None, username: str = None, password: str = None) -> str:
+    def create_resource(kube_config: str, file: str, namespace: str = "default", ssh_conn: SSHClient = None, ip_address: str = None, username: str = None, password: str = None) -> None:
+    def apply_resource(kube_config: str, file: str, ssh_conn: SSHClient = None, ip_address: str = None, username: str = None, password: str = None) -> None:
+    def delete_resource(kube_config: str, resource_type: str, name: str, namespace: str = "default", force: bool = False, ssh_conn: SSHClient = None, ip_address: str = None, username: str = None, password: str = None) -> None:
+    def get_resource_details_yaml(kube_config: str, resource_type: str, resource_name: str = "", namespace: str = "default", ssh_conn: SSHClient = None, ip_address: str = None, username: str = None, password: str = None) -> dict:
+
+Linux Ubuntu CLI - 
+
+    def create_ssh_conn(username: str, password: str, hostname: str = None, ip_address: str = None, pki: str = None, port: int = 22, sock: object = None) -> SSHClient:
+    def close_ssh_conn(ssh_conn: SSHClient) -> None:
+    def check_connection_status(ssh_conn: SSHClient) -> bool:
+    def create_sftp_conn(ssh_conn: SSHClient) -> SFTPClient:
+    def close_sftp_conn(sftp_conn: SFTPClient) -> None:
+    def create_jumphost_conn(jumphost_public_ip: str, jumphost_private_ip: str, jumphost_username: str, jumphost_password: str, username: str, password: str, hostname: str = None, ip_address: str = None, jumphost_port: int = 22, port: int = 22) -> SSHClient:
+    def start_tcpdump(pcap_file_path: str, ssh_conn: SSHClient = None, ip_address: str = None, username: str = None, password: str = None) -> None:
+    def get_process_id_list(process_name: str, ssh_conn: SSHClient = None, ip_address: str = None, username: str = None, password: str = None) -> list:
+    def soft_kill_process(process_id: str, ssh_conn: SSHClient = None, ip_address: str = None, username: str = None, password: str = None) -> None:
+    def hard_kill_process(process_id: str, ssh_conn: SSHClient = None, ip_address: str = None, username: str = None, password: str = None) -> Non
+    def copy_file_from_remote_to_local(remote_file_path: str, local_dir_path: str, ssh_conn: SSHClient = None, ip_address: str = None, username: str = None, password: str = None) -> None:
+    def create_file(file_name: str, file_data: str, ssh_conn: SSHClient = None, ip_address: str = None, username: str = None, password: str = None) -> None:
+    def get_file_content(file_name: str, ssh_conn: SSHClient = None, ip_address: str = None, username: str = None, password: str = None) -> str:
+    def truncate_file(file: str, ssh_conn: SSHClient = None, ip_address: str = None, username: str = None, password: str = None) -> None:
+    def find_file(dir_path: str, file_name: str, ssh_conn: SSHClient = None, ip_address: str = None, username: str = None, password: str = None) -> str:
+    def change_file_mode(file_mode: str, file_name: str, ssh_conn: SSHClient = None, ip_address: str = None, username: str = None, password: str = None) -> str:
+    def delete_file(file_path: str, ssh_conn: SSHClient = None, ip_address: str = None, username: str = None, password: str = None) -> None:
+    def create_directory(dir_path: str, ssh_conn: SSHClient = None, ip_address: str = None, username: str = None, password: str = None) -> str:
+    def compress_directory(folder_path: str, folder_name: str, ssh_conn: SSHClient = None, ip_address: str = None, username: str = None, password: str = None) -> None:
+    def delete_directory(directory: str, ssh_conn: SSHClient = None, ip_address: str = None, username: str = None, password: str = None) -> None:
+    def get_active_service_list(service_type: str, send_sudo: bool = False, ssh_conn: SSHClient = None, ip_address: str = None, username: str = None, password: str = None) -> list:
+    def run_systemctl_command(option: str, unit: str, send_sudo: bool = False, ssh_conn: SSHClient = None, ip_address: str = None, username: str = None, password: str = None) -> None:
+    def get_hostname(ssh_conn: SSHClient = None, ip_address: str = None, username: str = None, password: str = None) -> str:
+    def set_hostname(hostname: str, ssh_conn: SSHClient = None, ip_address: str = None, username: str = None, password: str = None) -> str:
+    def reboot_system(ssh_conn: SSHClient = None, ip_address: str = None, username: str = None, password: str = None) -> None:

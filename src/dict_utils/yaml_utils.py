@@ -111,15 +111,12 @@ def load_yaml(yaml_file: str) -> dict:
     Returns:
         data ('dict'): data dictionary
     """
-    # Make sure yaml_file is readable and is a file
     if not os.path.isfile(yaml_file) or not os.access(yaml_file, os.R_OK):
         raise FileNotFoundError(f"'{yaml_file}' does not exists or "
                                 "is unreadable")
-    # Raise exception when file is empty
     if pathlib.Path(yaml_file).stat().st_size == 0:
         raise FileExistsError(f"Empty file provided. '{yaml_file}' "
                               "can not be empty")
-    # Open yaml file
     with open(yaml_file, "r") as file_data:
         yaml_data = file_data.read()
     yaml = ruamel.yaml.YAML()

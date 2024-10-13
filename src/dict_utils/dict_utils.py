@@ -130,16 +130,14 @@ def load_json(json_file: str) -> dict:
     """
     This function is used to load data from json file
     Arguments:
-        json_file ('str'): json file (path and file name)
+        json_file ('str'): json file path and file name
     Returns:
         data ('dict'): json data
     """
     if not os.access(json_file, os.R_OK):
         raise FileNotFoundError(f"'{json_file}' does not exists or "
                                 "is unreadable")
-    # Check whether schema file exist
     if pathlib.Path(json_file).is_file():
-        # Open schema file and return schema dictionary
         with open(json_file) as file_schema:
             try:
                 data = json.load(file_schema)
@@ -160,34 +158,19 @@ def validate_data(data: dict, schema: dict = None) -> dict:
         data ('dict'): data in dictionary format
         schema ('dict'): Json schema to validate
     Returns:
-        data ('dict'): Validated data
-    Raises:
-        Exception: Error when input yaml fails validation against schema
+        data ('dict'): validated data
     """
-    # If schema is not passed then do not validate
     if not schema:
         return data
-
-    # Validate json data against schema passed
     validator = jsonschema.Draft7Validator(schema,
                                            format_checker=FormatChecker())
-
-    # errors variable is generator, and it is returned even if json parsing
-    # passes or fails,
-    # so to validate failures, error_list is maintained
     errors = validator.iter_errors(data)
     error_list = list(errors)
-    # If there are no errors in data against schema then return data
     if not error_list:
         return data
-
     detailed_err_list = []
-    # Printing detailed error in schema validation
     for error in error_list:
         error_path = list(error.absolute_path)
-        # JsonSchema returns confusing message such as
-        # "'speed' do not match any of the regexes: 'extra'""
-        # So converting it to something that makes more sense
         if "not match any of the regexes: 'extra'" in error.message:
             message = re.sub(
                 "(do|does) not match any of the regexes: 'extra'",
@@ -196,10 +179,7 @@ def validate_data(data: dict, schema: dict = None) -> dict:
             )
         else:
             message = error.message
-
         detailed_err_list.append(f"{message} for the path: {error_path}")
-
-    # If there are exceptions loading data dictionary
     raise ValueError(
         f"Error validating data input dictionary. Errors are: "
         f"{detailed_err_list}"

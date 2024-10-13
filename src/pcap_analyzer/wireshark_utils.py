@@ -12,16 +12,16 @@ def pcap_to_csv(pcap_file: str, csv_file: str, wireshark_path: str = None,
     """
     This function is used export the details of a pcap file into csv file
     Arguments:
-      pcap_file ('str'): pcap file name along with path
-      csv_file ('str'): csv file name
-      wireshark_path ('str'): wireshark path
-      csv_file_preferences ('str'): protocol preferences
-      columns ('str'): columns
-      display_filter ('str'): display_filter
-      all_protocol ('bool'): all_protocol
-      tshark_cmd ('str'): tshark_cmd
+        pcap_file ('str'): pcap file name along with path
+        csv_file ('str'): csv file name
+        wireshark_path ('str'): wireshark path
+        csv_file_preferences ('str'): protocol preferences
+        columns ('str'): columns
+        display_filter ('str'): display_filter
+        all_protocol ('bool'): all_protocol
+        tshark_cmd ('str'): tshark_cmd
     Returns:
-      csv_file ('str'): csv file path along with file name
+        csv_file ('str'): csv file path along with file name
     """
     if columns is None:
         columns = []
@@ -77,13 +77,13 @@ def pcap_to_txt(pcap_file: str, txt_file: str, display_filter: str = None,
     """
     This function is used write a particular packet data in text file
     Arguments:
-      pcap_file ('str'): pcap file name along with the file path
-      txt_file ('str'): text file which contains the packet information
-      display_filter ('str'): protocol to display_filter the particular packet
-      decode_pref ('dict'): decode preference for pcap
-      custom_pref ('dict'): custom preferences set for pcap
+        pcap_file ('str'): pcap file name along with the file path
+        txt_file ('str'): text file which contains the packet information
+        display_filter ('str'): protocol to display_filter the particular packet
+        decode_pref ('dict'): decode preference for pcap
+        custom_pref ('dict'): custom preferences set for pcap
     Returns:
-      txt_file ('str'): text file which contains the packet information
+        txt_file ('str'): text file which contains the packet information
     """
     if decode_pref is None:
         decode_pref = {"tcp.port==7777": "http2"}
@@ -110,12 +110,12 @@ def get_pcap_data(pcap_file: str, display_filter: str = None,
     """
     This function is used get packet data from a pcap file
     Arguments:
-      pcap_file ('str'): pcap file name along with the file path
-      display_filter ('str'): protocol to display filter the particular packet
-      decode_pref ('dict'): decode preference for pcap
-      custom_pref ('dict'): custom preferences set for pcap
+        pcap_file ('str'): pcap file name along with the file path
+        display_filter ('str'): protocol to display filter the particular packet
+        decode_pref ('dict'): decode preference for pcap
+        custom_pref ('dict'): custom preferences set for pcap
     Returns:
-      data ('str'): packet data
+        data ('str'): packet data
     """
     data = ""
     if decode_pref is None:
@@ -139,11 +139,11 @@ def get_packet_header_count(pcap_csv_file: str, packet_header: str) -> int:
     """
     This function is used get count of packet header
     Arguments:
-      pcap_csv_file ('str'): csv file path along with csv file name
-      packet_header ('str'): packet header name.
-        Example: "PDU session establishment request"
+        pcap_csv_file ('str'): csv file path along with csv file name
+        packet_header ('str'): packet header name.
+            Example: "PDU session establishment request"
     Returns:
-      counter ('int'): count of packet header
+        counter ('int'): count of packet header
     """
     with open(pcap_csv_file, "r") as pcap_file:
         csvreader = csv.reader(pcap_file)
@@ -152,10 +152,6 @@ def get_packet_header_count(pcap_csv_file: str, packet_header: str) -> int:
             rows.append(row)
     if not packet_header or not isinstance(packet_header, str):
         raise AttributeError(f"Name {packet_header} is not valid")
-    # Getting the count of pcap_avail_name from CSV file
-    # Row Example : "0.388043000","192.168.8.103","192.168.8.119",
-    #   "UplinkNASTransport, UL NAS transport,
-    #   PDU session establishment request"
     counter = 0
     for row_data in rows:
         for info_data in row_data:
